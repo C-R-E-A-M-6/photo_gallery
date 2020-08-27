@@ -13,8 +13,8 @@ db.once('open', function () {
   console.log('connected to mongodb://localhost/airbnb-gallery');
 });
 
-// create 20 homes
-for (let i = 0; i < 100; i++) {
+// create 100 homes
+for (let i = 1; i <= 100; i++) {
   let uniqueDescription = data.createDescription();
   let newPropertyObj = {
     _id: i,
