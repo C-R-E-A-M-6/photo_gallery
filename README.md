@@ -12,14 +12,14 @@
 
 ```json
     {
-      "room_id": "Number",
+      "roomID": "Number",
       "description": "String",
-      "starRating": "String",
-      "reviewTotal": "String",
-      "superhost": "String",
-      "location": "Number",
+      "starRating": "Number",
+      "reviewTotal": "Number",
+      "superhost": "Boolean",
+      "location": "String",
       "images": [{
-        "imageId": "Number",
+        "imageID": "Number",
         "imageURL": "String",
         "description": "String"
       }]
@@ -36,12 +36,12 @@
 ```json
     {
       "description": "String",
-      "starRating": "String",
-      "reviewTotal": "String",
-      "superhost": "String",
-      "location": "Number",
+      "starRating": "Number",
+      "reviewTotal": "Number",
+      "superhost": "Boolean",
+      "location": "String",
       "images": [{
-        "imageId": "Number",
+        "imageID": "Number",
         "imageURL": "String",
         "description": "String"
       }]
@@ -61,12 +61,12 @@
 ```json
     {
       "description": "String",
-      "starRating": "String",
-      "reviewTotal": "String",
-      "superhost": "String",
-      "location": "Number",
+      "starRating": "Number",
+      "reviewTotal": "Number",
+      "superhost": "Boolean",
+      "location": "String",
       "images": [{
-        "imageId": "Number",
+        "imageID": "Number",
         "imageURL": "String",
         "description": "String"
       }]
