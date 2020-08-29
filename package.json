@@ -8,7 +8,7 @@
     "test": "jest",
     "start": "webpack -d --watch",
     "server": "nodemon ./server/index.js",
-    "seed": "./db/seed.js"
+    "seed": "./db/MongoDB/seed.js"
   },
   "repository": {
     "type": "git",
