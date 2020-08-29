@@ -61,10 +61,6 @@
 ```json
     {
       "description": "String",
-      "starRating": "Number",
-      "reviewTotal": "Number",
-      "superhost": "Boolean",
-      "location": "String",
       "images": [{
         "imageID": "Number",
         "imageURL": "String",
