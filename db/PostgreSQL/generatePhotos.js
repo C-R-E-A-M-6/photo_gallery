@@ -2,34 +2,32 @@ const fs = require('fs');
 const csvWriter = require('csv-write-stream');
 const writer = csvWriter();
 
-const generateRooms = (i, callback) => {
+const generatePhotos = (i, callback) => {
   // The 'error' event is emitted if an error occurred while writing or piping data
   writer.on('error', function(error) {
-    console.log('Failed to generate rooms');
+    console.log('Failed to generate photos');
   });
   // The 'finish' event is emitted after the stream.end() method has been called
   writer.on('finish', function(data) {
-    console.log('Succeeded to generate rooms');
+    console.log('Succeeded to generate photos');
   })
-  // All the data from readable goes into 'rooms.csv'.
-  writer.pipe(fs.createWriteStream(`rooms.csv`));
+  // All the data from readable goes into 'photos.csv'.
+  writer.pipe(fs.createWriteStream(`photos.csv`));
 
-  const adjectives = ['Big', 'Beautiful', 'Comfortable', 'Cosy', 'Huge', 'Small', 'Homely'];
-  const rate = [3, 4, 5];
-  const cities = ['Los Angeles', 'San Diego', 'San Jose', 'San Francisco', 'Fresno', 'Sacramento', 'Long Beach', 'Oakland', 'Bakersfield', 'Anaheim', 'Santa Ana', 'Riverside', 'Stockton', 'Irvine'];
-  let id = 1;
+  const type = ['bedroom', '2nd_bedroom', 'house', 'backyard', 'kitchen', 'bathroom'];
+  const num = [0, 1, 2, 3, 4];
+  let image_id = 1;
+  let room_id = 1;
 
   function write() {
     let ok = true;
     while (i > 0 && ok) {
       i--;
       const data = {
-        roomID: id++,
-        description: `${adjectives[i % adjectives.length]} ${cities[i % cities.length]} Home`,
-        starRating: rate[i % rate.length] + (i / 100),
-        reviewTotal: i * i % 300,
-        superhost: i % 11 === 0 ? true : false,
-        location: `${cities[i % cities.length]}, CA United States`
+        imageId: image_id++,
+        imageURL: `https://airbnb-photos-backup.s3.us-east-2.amazonaws.com/${type[image_id % type.length]}${num[image_id % num.length]}.jpeg`,
+        image_description: `${type[image_id % type.length]}`,
+        roomID: room_id
       };
       // Last time
       if (i === 0) {
@@ -37,6 +35,10 @@ const generateRooms = (i, callback) => {
       } else {
         // See if continue, or wait.
         ok = writer.write(data);
+      }
+      // room id plus 1 every 6 images
+      if ((image_id - 1) % 6 === 0) {
+        room_id++;
       }
     }
     if (i > 0) {
@@ -48,6 +50,6 @@ const generateRooms = (i, callback) => {
   write();
 }
 
-generateRooms(10000000, () => {
+generatePhotos(60000000, () => {
   writer.end();
 })
