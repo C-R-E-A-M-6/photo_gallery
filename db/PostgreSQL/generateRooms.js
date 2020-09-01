@@ -15,7 +15,7 @@ const generateRooms = (i, callback) => {
   writer.pipe(fs.createWriteStream(`rooms.csv`));
 
   const adjectives = ['Big', 'Beautiful', 'Comfortable', 'Cosy', 'Huge', 'Small', 'Homely'];
-  const rate = [3.00, 3.32, 3.89, 3.93, 4.00, 4.12, 4,30, 4.63, 4.91, 5];
+  const rate = [3, 3.32, 3.89, 3.93, 4, 4.12, 4.30, 4.63, 4.91, 5];
   const cities = ['Los Angeles', 'San Diego', 'San Jose', 'San Francisco', 'Fresno', 'Sacramento', 'Long Beach', 'Oakland', 'Bakersfield', 'Anaheim', 'Santa Ana', 'Riverside', 'Stockton', 'Irvine'];
   let id = 1;
 
