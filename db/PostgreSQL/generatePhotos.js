@@ -24,7 +24,7 @@ const generatePhotos = (i, callback) => {
     while (i > 0 && ok) {
       i--;
       const data = {
-        imageId: image_id++,
+        imageID: image_id++,
         imageURL: `https://airbnb-photos-backup.s3.us-east-2.amazonaws.com/${type[image_id % type.length]}${num[image_id % num.length]}.jpeg`,
         image_description: `${type[image_id % type.length]}`,
         roomID: room_id

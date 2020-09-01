@@ -14,9 +14,13 @@ CREATE TABLE rooms (
 );
 
 CREATE TABLE photos (
-  imageId SERIAL PRIMARY KEY,
+  imageID SERIAL PRIMARY KEY,
   imageURL VARCHAR NOT NULL,
   image_description VARCHAR(100) NOT NULL,
-  roomID INT NOT NULL,
+  roomID INT NOT NULL
   -- FOREIGN KEY (roomID) REFERENCES rooms(roomID)
 );
+
+COPY rooms FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/rooms.csv' DELIMITER ',' CSV HEADER;
+
+COPY photos FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/photos.csv' DELIMITER ',' CSV HEADER;
