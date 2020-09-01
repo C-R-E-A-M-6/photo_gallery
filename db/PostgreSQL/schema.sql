@@ -22,5 +22,6 @@ CREATE TABLE photos (
 );
 
 COPY rooms FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/rooms.csv' DELIMITER ',' CSV HEADER;
-
 COPY photos FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/photos.csv' DELIMITER ',' CSV HEADER;
+
+CREATE INDEX photos_roomID_index ON photos (roomID);
