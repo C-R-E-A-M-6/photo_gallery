@@ -18,10 +18,12 @@ CREATE TABLE photos (
   imageURL VARCHAR NOT NULL,
   image_description VARCHAR(100) NOT NULL,
   roomID INT NOT NULL
-  -- FOREIGN KEY (roomID) REFERENCES rooms(roomID)
 );
 
-COPY rooms FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/rooms.csv' DELIMITER ',' CSV HEADER;
-COPY photos FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/photos.csv' DELIMITER ',' CSV HEADER;
+COPY rooms FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/CSV/rooms.csv' DELIMITER ',' CSV HEADER;
+
+COPY photos FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/CSV/photos.csv' DELIMITER ',' CSV HEADER;
 
 CREATE INDEX photos_roomID_index ON photos (roomID);
+
+ALTER TABLE photos ADD CONSTRAINT photos_roomID_foreignkey FOREIGN KEY (roomID) REFERENCES rooms (roomID);
