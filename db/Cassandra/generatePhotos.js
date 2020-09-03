@@ -16,15 +16,15 @@ const generatePhotos = (i, callback) => {
 
   const type = ['bedroom', '2nd_bedroom', 'house', 'backyard', 'kitchen', 'bathroom'];
   const num = [0, 1, 2, 3, 4];
-  let image_id = 0;
+  let image_id = 1;
   let room_id = 1;
 
   function write() {
     let ok = true;
     while (i > 0 && ok) {
       i--;
-      image_id++;
       const data = {
+        imageID: image_id++,
         imageURL: `https://airbnb-photos-backup.s3.us-east-2.amazonaws.com/${type[image_id % type.length]}${num[image_id % num.length]}.jpeg`,
         image_description: `${type[image_id % type.length]}`,
         roomID: room_id
