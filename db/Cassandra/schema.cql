@@ -22,6 +22,6 @@ CREATE TABLE photos_by_room (
   PRIMARY KEY (roomID, imageID)
 );
 
-COPY rooms (roomID, description, starRating, reviewTotal, superhost, location) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/CSV/rooms.csv' WITH DELIMITER = ',' AND HEADER = TRUE;
+COPY rooms (roomID, description, starRating, reviewTotal, superhost, location) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/Cassandra/rooms.csv' WITH DELIMITER = ',' AND HEADER = TRUE;
 
-COPY photos_by_room (imageID, imageURL, image_description, roomID) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/CSV/photos.csv' WITH DELIMITER = ',' AND HEADER = TRUE;
+COPY photos_by_room (imageID, imageURL, image_description, roomID) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/Cassandra/photos.csv' WITH DELIMITER = ',' AND HEADER = TRUE;
