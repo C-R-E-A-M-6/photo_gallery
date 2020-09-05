@@ -1,7 +1,7 @@
 ## Server API
 
 ### Get room info
-  * GET `/rooms/:id`
+  * GET `/rooms/:id/photogallery`
 
 **Path Parameters:**
   * `id` room id
