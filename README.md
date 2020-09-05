@@ -26,7 +26,7 @@
     }
 ```
 
-### Add room
+### Add a room
   * POST `/rooms`
 
 **Success Status Code:** `201`
@@ -39,44 +39,9 @@
       "starRating": "Number",
       "reviewTotal": "Number",
       "superhost": "Boolean",
-      "location": "String",
-      "images": [{
-        "imageID": "Number",
-        "imageURL": "String",
-        "description": "String"
-      }]
+      "location": "String"
     }
 ```
-
-### Update room info
-  * PATCH `/rooms/:id`
-
-**Path Parameters:**
-  * `id` room id
-
-**Success Status Code:** `204`
-
-**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
-
-```json
-    {
-      "description": "String",
-      "images": [{
-        "imageID": "Number",
-        "imageURL": "String",
-        "description": "String"
-      }]
-    }
-```
-
-### Delete a room
-  * DELETE `/rooms/:id`
-
-**Path Parameters:**
-  * `id` room id
-
-**Success Status Code:** `204`
-
 
 ### Add a photo to a room
   * POST `/rooms/:id/photos`
@@ -95,8 +60,24 @@
     }
 ```
 
-### Update photo info of a room
-  * PATCH `/rooms/:id/photos/:photo_id`
+### Update room info
+  * PATCH `/rooms/:id`
+
+**Path Parameters:**
+  * `id` room id
+
+**Success Status Code:** `204`
+
+**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
+
+```json
+    {
+      "description": "String"
+    }
+```
+
+### Update photo info
+  * PATCH `/photos/:photo_id`
 
 **Path Parameters:**
   * `id` room id
@@ -113,11 +94,18 @@
     }
 ```
 
-### Delete photo of a room
-  * DELETE `/rooms/:id/photos/:photo_id`
+### Delete a room and all photos of that room
+  * DELETE `/rooms/:id`
 
 **Path Parameters:**
   * `id` room id
-  * `photo_id` photo ids
+
+**Success Status Code:** `204`
+
+### Delete a photo
+  * DELETE `/photos/:photo_id`
+
+**Path Parameters:**
+  * `photo_id` photo id
 
 **Success Status Code:** `204`
