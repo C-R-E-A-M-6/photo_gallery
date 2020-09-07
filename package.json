@@ -8,7 +8,8 @@
     "test": "jest",
     "start": "webpack -d --watch",
     "server": "nodemon ./server/index.js",
-    "seed": "./db/MongoDB/seed.js"
+    "seed": "./db/MongoDB/seed.js",
+    "k6": "k6 run k6Script.js"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "csv-write-stream": "^2.0.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.27",
+    "newrelic": "^6.13.0",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "pg": "^8.3.3",

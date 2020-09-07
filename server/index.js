@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const newRelic = require('newrelic');
 const app = express();
 const PORT = 3001;
 

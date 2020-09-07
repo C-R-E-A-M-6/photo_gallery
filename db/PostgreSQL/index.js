@@ -1,11 +1,11 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
+const pool = new Pool({
   user: 'sdc',
   host: 'localhost',
   database: 'photogallery'
 })
 
-client.connect();
+pool.connect();
 
-module.exports = client;
+module.exports = pool;
