@@ -14,9 +14,14 @@ CREATE TABLE rooms (
 );
 
 CREATE TABLE photos (
-  imageId SERIAL PRIMARY KEY,
+  imageID SERIAL PRIMARY KEY,
   imageURL VARCHAR NOT NULL,
   image_description VARCHAR(100) NOT NULL,
-  roomID INT NOT NULL,
-  -- FOREIGN KEY (roomID) REFERENCES rooms(roomID)
+  roomID INT REFERENCES rooms(roomID) ON DELETE CASCADE NOT NULL
 );
+
+COPY rooms (description, starRating, reviewTotal, superhost, location) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/rooms.csv' DELIMITER ',' CSV HEADER;
+
+COPY photos (imageURL, image_description, roomID) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/PostgreSQL/photos.csv' DELIMITER ',' CSV HEADER;
+
+CREATE INDEX photos_roomID_index ON photos (roomID);

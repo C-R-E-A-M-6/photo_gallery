@@ -1,14 +1,13 @@
 DROP KEYSPACE photogallery;
 
-CREATE KEYSPACE photogallery WITH replication =
-  {'class': 'SimpleStrategy', 'replication_factor' : 1};
+CREATE KEYSPACE photogallery WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
 
 USE photogallery;
 
-CREATE TABLE room (
+CREATE TABLE rooms (
   roomID INT,
   description TEXT,
-  starRating INT,
+  starRating DOUBLE,
   reviewTotal INT,
   superhost BOOLEAN,
   location TEXT,
@@ -20,6 +19,9 @@ CREATE TABLE photos_by_room (
   imageURL TEXT,
   image_description TEXT,
   roomID INT,
-  createdAt TIMESTAMP,
-  PRIMARY KEY (roomID, createdAt)
-) WITH CLUSTERING ORDER BY (createdAt DESC);
+  PRIMARY KEY (roomID, imageID)
+);
+
+COPY rooms (roomID, description, starRating, reviewTotal, superhost, location) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/Cassandra/rooms.csv' WITH DELIMITER = ',' AND HEADER = TRUE;
+
+COPY photos_by_room (imageID, imageURL, image_description, roomID) FROM '/Users/harryho/Desktop/JSProject/HRSF129/SDC/gallery/db/Cassandra/photos.csv' WITH DELIMITER = ',' AND HEADER = TRUE;

@@ -26,20 +26,13 @@ export default () => {
 
   let getHouse = () => {
     let id = window.location.pathname.split('/')[2];
-    console.log(id)
-    axios.get(`/properties/${id}`)
+    axios.get(`/rooms/${id}/photogallery`)
       .then((house) => {
-        let houseInfo = house.data[0];
+        console.log("GET request succeed");
+        let houseInfo = house.data;
         setSuperhost(houseInfo.superhost);
         setHome(houseInfo);
-        let arrayImages = [
-          houseInfo.images.house,
-          houseInfo.images.kitchen,
-          houseInfo.images.backyard,
-          ...houseInfo.images.bedrooms,
-          ...houseInfo.images.bathrooms,
-        ];
-        setAllImages(arrayImages);
+        setAllImages(houseInfo.images);
         setLoading(false);
       })
       .catch(console.log)
